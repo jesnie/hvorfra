@@ -51,6 +51,7 @@ ignore = [
   "E741",  # Ambiguous variable name: `l`
   "EM101",  # Exception must not use a string literal, assign to variable first
   "EM102",  # Exception must not use an f-string literal, assign to variable first
+  "ERA001",  # Found commented-out code
   "FBT",  # Boolean value in call
   "FIX002",  # Line contains TODO, consider resolving the issue
   "PLR0912",  # Too many branches
