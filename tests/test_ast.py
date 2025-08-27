@@ -1,7 +1,6 @@
 from ast import AST, Call, ClassDef, FunctionDef, Module, Return
 
-from hvorfra import SELF, get_caller_location
-from hvorfra.ast import get_ast_path
+from hvorfra import SELF, get_ast_path, get_caller_location
 
 
 def test_get_ast_path() -> None:
