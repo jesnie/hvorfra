@@ -3,7 +3,7 @@ from functools import cache, singledispatch
 from pathlib import Path
 from typing import Any
 
-from hvorfra.types import CodeLocation
+from hvorfra.types import AstPath, CodeLocation
 
 
 @cache
@@ -13,7 +13,7 @@ def get_ast(path: Path) -> Module:
 
 @singledispatch
 def _find_node(ast: Any, location: CodeLocation, result: list[AST]) -> bool:
-    raise TypeError("Unknown type of AST:", type(ast), ast)
+    raise TypeError("Unknown type of AST.", ast)
 
 
 @_find_node.register
@@ -57,13 +57,15 @@ def _find_node__list(ast: list[Any], location: CodeLocation, result: list[AST]) 
 
 @_find_node.register
 def _find_node__primitive(
-    ast: bool | float | str | None, location: CodeLocation, result: list[AST]
+    ast: bool | float | int | str | None,  # noqa: PYI041
+    location: CodeLocation,
+    result: list[AST],
 ) -> bool:
     return False
 
 
 @cache
-def get_ast_path(location: CodeLocation) -> tuple[AST, ...]:
+def get_ast_path(location: CodeLocation) -> AstPath:
     ast = get_ast(location.path)
     result: list[AST] = []
     assert _find_node(ast, location, result)
