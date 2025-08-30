@@ -1,9 +1,9 @@
 from ast import AST, Module, expr, parse, stmt
-from functools import cache, singledispatch
+from functools import singledispatch
 from pathlib import Path
 from typing import Any
 
-from hvorfra.types import AstPath, CodeLocation
+from hvorfra.types import AstPath, CodeLocation, cache
 
 
 @cache
