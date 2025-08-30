@@ -7,12 +7,11 @@ from hvorfra import get_assignment_name, get_ast_path, get_caller_location
 
 class AssignmentNamed:
     def __init__(self) -> None:
-        self.expr_name = get_assignment_name(
-            get_ast_path(get_caller_location()), include_exprs=True
-        )
-        self.stmt_name = get_assignment_name(
-            get_ast_path(get_caller_location()), include_exprs=False
-        )
+        location = get_caller_location()
+        assert location is not None
+        path = get_ast_path(location)
+        self.expr_name = get_assignment_name(path, include_exprs=True)
+        self.stmt_name = get_assignment_name(path, include_exprs=False)
 
     def __add__(self, other: AssignmentNamed) -> AssignmentNamed:
         return other

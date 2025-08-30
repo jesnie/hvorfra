@@ -12,9 +12,9 @@ from ast import (
     Tuple,
     keyword,
 )
-from functools import cache, singledispatch
+from functools import singledispatch
 
-from hvorfra.types import AstPath
+from hvorfra.types import AstPath, cache
 
 STMT_ASSIGNMENT_TYPES = (Assign, AnnAssign, AugAssign)
 EXPR_ASSIGNMENT_TYPES = (keyword, Dict)
