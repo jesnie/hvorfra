@@ -4,17 +4,18 @@ import pytest
 
 from hvorfra import PARENT, SELF, CodeLocation, get_caller_location
 
+MODULE = "tests.test_stack"
 PATH = Path(__file__)
-BASE_LINE = 21
+BASE_LINE = 22
 
 
 @pytest.mark.parametrize(
     "depth,expected",
     [
-        (SELF, CodeLocation(PATH, BASE_LINE + 2, 15)),
-        (PARENT, CodeLocation(PATH, BASE_LINE + 7, 23)),
-        (2, CodeLocation(PATH, BASE_LINE + 9, 19)),
-        (3, CodeLocation(PATH, BASE_LINE + 13, 11)),
+        (SELF, CodeLocation(MODULE, PATH, BASE_LINE + 2, 15)),
+        (PARENT, CodeLocation(MODULE, PATH, BASE_LINE + 7, 23)),
+        (2, CodeLocation(MODULE, PATH, BASE_LINE + 9, 19)),
+        (3, CodeLocation(MODULE, PATH, BASE_LINE + 13, 11)),
         (10_000, None),
     ],
 )
