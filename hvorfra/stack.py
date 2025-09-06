@@ -18,6 +18,7 @@ def get_caller_location(depth: int = PARENT) -> CodeLocation | None:
         return None
 
     return CodeLocation(
+        frame.f_globals.get("__name__"),
         Path(frame_info.filename),
         frame_info.lineno,
         positions.col_offset,
