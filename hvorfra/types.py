@@ -9,7 +9,7 @@ PARENT = 1
 
 
 class CodeLocation(NamedTuple):
-    module: str | None
+    module_name: str | None
     path: Path
     line: int
     column: int
